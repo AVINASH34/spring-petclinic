@@ -8,7 +8,7 @@ RUN mvn package
 FROM maven:3.8.6-openjdk-18-slim
 
 # Create a non-root user and group with specific UID and GID
-RUN addgroup -g 1000 spc && adduser -h "/spc" -u 1006 -G spc -s /bin/bash -D spc
+RUN addgroup --gid 1000 spc && adduser --home "/spc" --uid 1006 --ingroup spc --shell /bin/bash --disabled-password --gecos "" spc
 
 # Set the working directory for the application
 WORKDIR /spc
